@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.9"
+services:
+  doctornow.presentation.webapi:
+    build:
+      context: "C:\\Users\\medeiroshudson\\RiderProjects\\DoctorNow"
+      dockerfile: "source/DoctorNow.Presentation.WebApi/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/DoctorNow.Presentation.WebApi.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "doctornow.presentation.webapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\medeiroshudson\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Users\\medeiroshudson\\RiderProjects\\DoctorNow\\source\\DoctorNow.Presentation.WebApi:/app:rw"
+    - "C:\\Users\\medeiroshudson\\RiderProjects\\DoctorNow:/src:rw"
+    working_dir: "/app"

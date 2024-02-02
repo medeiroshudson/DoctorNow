@@ -1,0 +1,26 @@
+﻿version: '3.9'
+
+services:
+  doctornow.database:
+    image: postgres:16.1-alpine3.19
+    environment:
+      POSTGRES_DB: DoctorNow
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+        
+  doctornow.presentation.webapi:
+    image: doctornow.presentation.webapi
+    build:
+      context: .
+      dockerfile: source/DoctorNow.Presentation.WebApi/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    depends_on:
+      - doctornow.database
+    ports:
+      - "5000:8080"
+      - "5001:8081"

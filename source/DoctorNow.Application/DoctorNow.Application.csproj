@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Tenant\Class1.cs" />
+      <Compile Remove="Tenant\Create\**" />
+      <Compile Remove="Abstractions\IBaseCommand.cs" />
+      <Compile Remove="Tenants\Class1.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Tenant\Create\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Tenant\Create\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DoctorNow.Domain\DoctorNow.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.2.0" />
+    </ItemGroup>
+
+</Project>
