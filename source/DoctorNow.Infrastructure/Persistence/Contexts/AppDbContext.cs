@@ -1,24 +1,34 @@
+using DoctorNow.Domain.Options;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.Tenants;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace DoctorNow.Infrastructure.Persistence.Contexts;
 
 public class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    private readonly DatabaseOptions _databaseOptions;
+    public AppDbContext(DbContextOptions<AppDbContext> options, 
+        IOptions<DatabaseOptions> databaseOptions) : base(options)
     {
-        
+        _databaseOptions = databaseOptions.Value;
     }
     
     public DbSet<Tenant> Tenants { get; init; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // if (optionsBuilder.IsConfigured == false)
-        // {
-        //     optionsBuilder.UseNpgsql();
-        // }
+        if (optionsBuilder.IsConfigured) return;
+        
+        optionsBuilder.UseNpgsql(_databaseOptions.ConnectionString, actions =>
+        {
+            actions.CommandTimeout(_databaseOptions.CommandTimeout);
+            actions.EnableRetryOnFailure(_databaseOptions.MaxRetryCount);
+        });
+
+        optionsBuilder.EnableSensitiveDataLogging(_databaseOptions.SensitiveDataLogging)
+            .EnableDetailedErrors(_databaseOptions.EnableDetailedErros);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
