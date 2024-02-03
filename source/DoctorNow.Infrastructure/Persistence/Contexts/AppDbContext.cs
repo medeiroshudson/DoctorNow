@@ -9,8 +9,7 @@ namespace DoctorNow.Infrastructure.Persistence.Contexts;
 public class AppDbContext : DbContext
 {
     private readonly DatabaseOptions _databaseOptions;
-    public AppDbContext(DbContextOptions<AppDbContext> options, 
-        IOptions<DatabaseOptions> databaseOptions) : base(options)
+    public AppDbContext(IOptions<DatabaseOptions> databaseOptions)
     {
         _databaseOptions = databaseOptions.Value;
     }
