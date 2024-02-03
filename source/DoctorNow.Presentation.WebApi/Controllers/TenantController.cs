@@ -1,9 +1,10 @@
+using DoctorNow.Application.Tenants;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Application.Tenants.Queries;
 using DoctorNow.Application.Tenants.Commands;
-using DoctorNow.Presentation.Common.Contracts.Tenants;
+using DoctorNow.Application.Tenants.Contracts;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
 
@@ -17,8 +18,13 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         var query = new GetAllTenantsQuery();
         
         var result = await sender.Send(query);
-        
-        return result.IsSuccess ? StatusCode(StatusCodes.Status200OK, result.Value) : HandleErrorResult(result.Error);
+     
+        if (result.IsFailure) return HandleErrorResult(result.Error);
+
+        var mapped = new TenantMapper()
+            .MapToResponseCollection(result.Value!);
+
+        return StatusCode(StatusCodes.Status200OK, mapped);
     }
     
     [HttpGet("{id:Guid}")]
@@ -27,8 +33,13 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         var query = new GetTenantByIdQuery(id);
 
         var result = await sender.Send(query);
+        
+        if (result.IsFailure) return HandleErrorResult(result.Error);
 
-        return result.IsSuccess ? StatusCode(StatusCodes.Status200OK, result.Value) : HandleErrorResult(result.Error);
+        var mapped = new TenantMapper()
+            .MapToResponse(result.Value!);
+
+        return StatusCode(StatusCodes.Status200OK, mapped);
     }
     
     [HttpPost]
@@ -37,18 +48,29 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         var command = new CreateTenantCommand(request.Name, request.DocumentNumber);
         
         var result = await sender.Send(command);
-        
-        return result.IsSuccess ? StatusCode(StatusCodes.Status201Created, result.Value) : HandleErrorResult(result.Error);
+     
+        if (result.IsFailure) return HandleErrorResult(result.Error);
+
+        var mapped = new TenantMapper()
+            .MapToResponse(result.Value!);
+
+        return StatusCode(StatusCodes.Status201Created, mapped);
     }
     
     [HttpPut("{id:Guid}")]
     public async Task<IActionResult> Update(Guid id, UpdateTenantRequest request)
     {
-        var command = new UpdateTenantCommand(id, request.Name, request.DocumentNumber, request.Status);
+        var command = new UpdateTenantCommand(
+            id, request.Name, request.DocumentNumber, request.Status);
         
         var result = await sender.Send(command);
         
-        return result.IsSuccess ? StatusCode(StatusCodes.Status200OK, result.Value) : HandleErrorResult(result.Error);
+        if (result.IsFailure) return HandleErrorResult(result.Error);
+
+        var mapped = new TenantMapper()
+            .MapToResponse(result.Value!);
+
+        return StatusCode(StatusCodes.Status200OK, mapped);
     }
     
     [HttpDelete("{id:Guid}")]

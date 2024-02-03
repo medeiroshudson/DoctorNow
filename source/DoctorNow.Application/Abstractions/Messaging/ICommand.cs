@@ -1,7 +1,7 @@
-using DoctorNow.Domain.SharedKernel;
 using MediatR;
+using DoctorNow.Domain.SharedKernel;
 
-namespace DoctorNow.Application.Abstractions;
+namespace DoctorNow.Application.Abstractions.Messaging;
 
 public interface ICommand : IRequest
 {

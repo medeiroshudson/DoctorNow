@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DoctorNow.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240202231935_AddedTenantEntity")]
+    [Migration("20240203032746_AddedTenantEntity")]
     partial class AddedTenantEntity
     {
         /// <inheritdoc />
@@ -55,6 +55,9 @@ namespace DoctorNow.Infrastructure.Persistence.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

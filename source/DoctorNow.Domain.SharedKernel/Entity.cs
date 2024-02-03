@@ -15,6 +15,7 @@ public abstract class Entity
     
     public Guid Id { get; private init; }
     public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
     public bool Deleted { get; set; }
     public DateTime? DeletedAt { get; set; }
     public List<IDomainEvent> DomainEvents => _domainEvents.ToList();

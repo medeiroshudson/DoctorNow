@@ -1,4 +1,5 @@
 using DoctorNow.Application.Abstractions;
+using DoctorNow.Application.Abstractions.Messaging;
 using DoctorNow.Application.Tenants.Commands;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.SharedKernel.Interfaces;

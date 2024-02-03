@@ -15,12 +15,10 @@ public class AppDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (optionsBuilder.IsConfigured == false)
-        {
-            optionsBuilder.UseNpgsql(opt => 
-                opt.MigrationsAssembly("DoctorNow.Infrastructure.Persistence"));
-        }
-            
+        // if (optionsBuilder.IsConfigured == false)
+        // {
+        //     optionsBuilder.UseNpgsql();
+        // }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
@@ -48,6 +46,7 @@ public class AppDbContext : DbContext
                     break;
                 case EntityState.Modified:
                     entityEntry.Property(nameof(entity.CreatedAt)).IsModified = false;
+                    entityEntry.CurrentValues[nameof(entity.UpdatedAt)] = DateTime.UtcNow;
                     break;
                 case EntityState.Deleted:
                     entityEntry.State = EntityState.Modified;

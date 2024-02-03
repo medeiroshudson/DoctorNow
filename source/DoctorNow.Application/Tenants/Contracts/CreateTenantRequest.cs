@@ -1,4 +1,4 @@
-namespace DoctorNow.Presentation.Common.Contracts.Tenants;
+namespace DoctorNow.Application.Tenants.Contracts;
 
 public record CreateTenantRequest(
     string Name, 

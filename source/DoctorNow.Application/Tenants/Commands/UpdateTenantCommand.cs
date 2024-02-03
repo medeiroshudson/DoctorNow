@@ -1,4 +1,5 @@
 using DoctorNow.Application.Abstractions;
+using DoctorNow.Application.Abstractions.Messaging;
 using DoctorNow.Domain.Tenants;
 
 namespace DoctorNow.Application.Tenants.Commands;

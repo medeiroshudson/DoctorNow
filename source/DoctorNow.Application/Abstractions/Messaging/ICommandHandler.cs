@@ -1,7 +1,7 @@
-using MediatR;
 using DoctorNow.Domain.SharedKernel;
+using MediatR;
 
-namespace DoctorNow.Application.Abstractions;
+namespace DoctorNow.Application.Abstractions.Messaging;
 
 public interface ICommandHandler<in TCommand>
     where TCommand : ICommand

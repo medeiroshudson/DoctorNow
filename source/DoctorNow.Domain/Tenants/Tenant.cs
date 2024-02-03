@@ -33,6 +33,7 @@ public class Tenant : Entity
         Name = name;
         DocumentNumber = documentNumber;
         Status = status;
+        UpdatedAt = DateTime.UtcNow;
         
         this.Raise(new TenantUpdatedDomainEvent(this.Id));
     }

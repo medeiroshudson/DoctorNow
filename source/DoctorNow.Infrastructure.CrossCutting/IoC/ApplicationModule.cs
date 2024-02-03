@@ -1,5 +1,7 @@
 using Autofac;
 using DoctorNow.Application.Abstractions;
+using DoctorNow.Application.Abstractions.Mapping;
+using DoctorNow.Application.Abstractions.Messaging;
 using ApplicationLayer = DoctorNow.Application.Application;
 
 namespace DoctorNow.Infrastructure.CrossCutting.IoC;
