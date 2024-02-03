@@ -8,17 +8,17 @@ public sealed class DatabaseOptions
     
     [Required]
     [Range(1, 10)]
-    public int MaxRetryCount { get; set; }
+    public int MaxRetryCount { get; init; }
     
     [Required]
-    public int CommandTimeout { get; set; }
+    public int CommandTimeout { get; init; }
     
     [Required]
-    public bool EnableDetailedErros { get; set; }
+    public bool EnableDetailedErros { get; init; }
     
     [Required]
-    public bool SensitiveDataLogging { get; set; }
+    public bool SensitiveDataLogging { get; init; }
     
     [Required]
-    public string ConnectionString { get; set; } = string.Empty;
+    public string ConnectionString { get; init; } = string.Empty;
 }
