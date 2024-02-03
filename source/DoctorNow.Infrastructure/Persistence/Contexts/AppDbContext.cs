@@ -6,15 +6,11 @@ using Microsoft.Extensions.Options;
 
 namespace DoctorNow.Infrastructure.Persistence.Contexts;
 
-public class AppDbContext : DbContext
+public class AppDbContext(IOptions<DatabaseOptions> databaseOptions) : DbContext
 {
-    private readonly DatabaseOptions _databaseOptions;
-    public AppDbContext(IOptions<DatabaseOptions> databaseOptions)
-    {
-        _databaseOptions = databaseOptions.Value;
-    }
+    private readonly DatabaseOptions _databaseOptions = databaseOptions.Value;
     
-    public DbSet<Tenant> Tenants { get; init; }
+    public DbSet<Tenant> Tenants => Set<Tenant>();
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
