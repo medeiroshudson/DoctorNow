@@ -1,6 +1,6 @@
 using DoctorNow.Domain.Tenants;
 
-namespace DoctorNow.Application.Tenants.Contracts;
+namespace DoctorNow.Application.Features.Tenants.Contracts;
 
 public record UpdateTenantRequest(
     string Name, 

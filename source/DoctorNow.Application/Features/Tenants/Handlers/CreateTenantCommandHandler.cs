@@ -1,11 +1,10 @@
-using DoctorNow.Domain.Tenants;
-using DoctorNow.Application.Abstractions;
 using DoctorNow.Application.Abstractions.Messaging;
-using DoctorNow.Application.Tenants.Commands;
+using DoctorNow.Application.Features.Tenants.Commands;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.SharedKernel.Interfaces;
+using DoctorNow.Domain.Tenants;
 
-namespace DoctorNow.Application.Tenants.Handlers;
+namespace DoctorNow.Application.Features.Tenants.Handlers;
 
 internal sealed class CreateTenantCommandHandler : ICommandHandler<CreateTenantCommand, Tenant>
 {

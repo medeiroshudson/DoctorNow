@@ -1,9 +1,9 @@
+using DoctorNow.Application.Abstractions.Mapping;
+using DoctorNow.Application.Features.Tenants.Contracts;
 using DoctorNow.Domain.Tenants;
 using Riok.Mapperly.Abstractions;
-using DoctorNow.Application.Tenants.Contracts;
-using DoctorNow.Application.Abstractions.Mapping;
 
-namespace DoctorNow.Application.Tenants;
+namespace DoctorNow.Application.Features.Tenants;
 
 [Mapper]
 public partial class TenantMapper : IMapper

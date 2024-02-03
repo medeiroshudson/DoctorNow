@@ -1,10 +1,9 @@
-using DoctorNow.Application.Abstractions;
 using DoctorNow.Application.Abstractions.Messaging;
-using DoctorNow.Application.Tenants.Queries;
+using DoctorNow.Application.Features.Tenants.Queries;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.Tenants;
 
-namespace DoctorNow.Application.Tenants.Handlers;
+namespace DoctorNow.Application.Features.Tenants.Handlers;
 
 public sealed class GetTenantByIdQueryHandler : IQueryHandler<GetTenantByIdQuery, Tenant>
 {

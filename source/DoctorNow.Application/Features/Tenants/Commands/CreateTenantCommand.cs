@@ -1,7 +1,6 @@
-using DoctorNow.Domain.Tenants;
-using DoctorNow.Application.Abstractions;
 using DoctorNow.Application.Abstractions.Messaging;
+using DoctorNow.Domain.Tenants;
 
-namespace DoctorNow.Application.Tenants.Commands;
+namespace DoctorNow.Application.Features.Tenants.Commands;
 
 public record CreateTenantCommand(string Name, string DocumentNumber) : ICommand<Tenant>;
