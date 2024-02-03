@@ -1,10 +1,10 @@
-using DoctorNow.Application.Tenants;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using DoctorNow.Domain.SharedKernel;
-using DoctorNow.Application.Tenants.Queries;
-using DoctorNow.Application.Tenants.Commands;
-using DoctorNow.Application.Tenants.Contracts;
+using DoctorNow.Application.Features.Tenants.Queries;
+using DoctorNow.Application.Features.Tenants.Commands;
+using DoctorNow.Application.Features.Tenants.Contracts;
+using TenantMapper = DoctorNow.Application.Features.Tenants.TenantMapper;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
 
