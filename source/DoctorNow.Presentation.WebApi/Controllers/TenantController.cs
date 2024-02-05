@@ -4,6 +4,7 @@ using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Application.Features.Tenants.Queries;
 using DoctorNow.Application.Features.Tenants.Commands;
 using DoctorNow.Application.Features.Tenants.Contracts;
+using DoctorNow.Domain.Tenants;
 using TenantMapper = DoctorNow.Application.Features.Tenants.TenantMapper;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
@@ -87,8 +88,8 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
     {
         return error.Code switch
         {
-            "Tenant.NotFound" => StatusCode(StatusCodes.Status404NotFound, error),
-            "Tenant.DocumentNumberNotUnique" => StatusCode(StatusCodes.Status409Conflict, error),
+            TenantErrors.NotFoundErrorCode => StatusCode(StatusCodes.Status404NotFound, error),
+            TenantErrors.DocumentNumberNotUniqueErrorCode => StatusCode(StatusCodes.Status409Conflict, error),
             _ => StatusCode(StatusCodes.Status400BadRequest, error),
         };
     }
