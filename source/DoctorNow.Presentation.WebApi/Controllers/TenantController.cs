@@ -1,11 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using DoctorNow.Domain.Tenants;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Application.Features.Tenants.Queries;
 using DoctorNow.Application.Features.Tenants.Commands;
 using DoctorNow.Application.Features.Tenants.Contracts;
-using DoctorNow.Domain.Tenants;
-using TenantMapper = DoctorNow.Application.Features.Tenants.TenantMapper;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
 
@@ -19,13 +18,8 @@ public class TenantController(ISender sender) : ControllerBase
         var query = new GetAllTenantsQuery();
         
         var result = await sender.Send(query);
-        
-        if (result.IsFailure) return HandleErrorResult(result.Error);
 
-        var mapped = new TenantMapper()
-            .MapToResponseCollection(result.Data!);
-
-        return StatusCode(StatusCodes.Status200OK, mapped);
+        return MatchResult(result);
     }
     
     [HttpGet("{id:Guid}")]
@@ -34,13 +28,8 @@ public class TenantController(ISender sender) : ControllerBase
         var query = new GetTenantByIdQuery(id);
 
         var result = await sender.Send(query);
-        
-        if (result.IsFailure) return HandleErrorResult(result.Error);
 
-        var mapped = new TenantMapper()
-            .MapToResponse(result.Data!);
-
-        return StatusCode(StatusCodes.Status200OK, mapped);
+        return MatchResult(result);
     }
     
     [HttpPost]
@@ -49,13 +38,8 @@ public class TenantController(ISender sender) : ControllerBase
         var command = new CreateTenantCommand(request.Name, request.DocumentNumber);
         
         var result = await sender.Send(command);
-     
-        if (result.IsFailure) return HandleErrorResult(result.Error);
 
-        var mapped = new TenantMapper()
-            .MapToResponse(result.Data!);
-
-        return StatusCode(StatusCodes.Status201Created, mapped);
+        return MatchResult(result);
     }
     
     [HttpPut("{id:Guid}")]
@@ -65,13 +49,8 @@ public class TenantController(ISender sender) : ControllerBase
             id, request.Name, request.DocumentNumber, request.Status);
         
         var result = await sender.Send(command);
-        
-        if (result.IsFailure) return HandleErrorResult(result.Error);
 
-        var mapped = new TenantMapper()
-            .MapToResponse(result.Data!);
-
-        return StatusCode(StatusCodes.Status200OK, mapped);
+        return MatchResult(result);
     }
     
     [HttpDelete("{id:Guid}")]
@@ -80,17 +59,19 @@ public class TenantController(ISender sender) : ControllerBase
         var command = new DeleteTenantCommand(id);
         
         var result = await sender.Send(command);
-        
-        return result.IsSuccess ? StatusCode(StatusCodes.Status204NoContent) : HandleErrorResult(result.Error);
+
+        return MatchResult(result);
     }
 
-    private ObjectResult HandleErrorResult(Error error)
+    private IActionResult MatchResult<TReturn>(Result<TReturn, Error> result)
     {
-        return error.Code switch
-        {
-            TenantErrors.NotFoundErrorCode => StatusCode(StatusCodes.Status404NotFound, error),
-            TenantErrors.DocumentNumberNotUniqueErrorCode => StatusCode(StatusCodes.Status409Conflict, error),
-            _ => StatusCode(StatusCodes.Status400BadRequest, error),
-        };
+        return result.Match<IActionResult>(
+            success => StatusCode(StatusCodes.Status200OK, result.Data),
+            failure => failure.Code switch
+            {
+                TenantErrors.NotFoundErrorCode => StatusCode(StatusCodes.Status404NotFound, failure),
+                TenantErrors.DocumentNumberNotUniqueErrorCode => StatusCode(StatusCodes.Status409Conflict, failure),
+                _ => StatusCode(StatusCodes.Status400BadRequest, failure),
+            });
     }
 }

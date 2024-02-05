@@ -1,4 +1,5 @@
 using DoctorNow.Application.Abstractions.Messaging;
+using DoctorNow.Application.Features.Tenants.Contracts;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.Tenants;
 
@@ -8,4 +9,4 @@ public record UpdateTenantCommand(
     Guid Id, 
     string Name, 
     string DocumentNumber, 
-    TenantStatus Status): ICommand<Tenant, Error>;
+    TenantStatus Status): ICommand<TenantResponse, Error>;

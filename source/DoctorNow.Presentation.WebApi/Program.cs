@@ -4,12 +4,13 @@ using DoctorNow.Presentation.Common.Initializers;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-builder.AddAppSettings();
+builder.ConfigureAppSettings();
 builder.ConfigureAutofacContainer();
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerExplorer()
     .InitializeDbContext(configuration)
+    .ConfigureHealthChecks()
     .AddMediatR();
 
 var app = builder.Build();
@@ -26,5 +27,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseHealthChecks("/health");
 
 app.Run();

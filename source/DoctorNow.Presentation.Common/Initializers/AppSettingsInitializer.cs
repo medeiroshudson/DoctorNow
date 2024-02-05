@@ -8,7 +8,7 @@ namespace DoctorNow.Presentation.Common.Initializers;
 
 public static class AppSettingsInitializer
 {
-    public static void AddAppSettings(this WebApplicationBuilder applicationBuilder)
+    public static void ConfigureAppSettings(this WebApplicationBuilder applicationBuilder)
     {
         var env = applicationBuilder.Environment;
         var config = applicationBuilder.Configuration;

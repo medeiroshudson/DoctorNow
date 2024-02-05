@@ -9,5 +9,5 @@ namespace DoctorNow.Application.Features.Tenants;
 public partial class TenantMapper : IMapper
 {
     public partial TenantResponse MapToResponse(Tenant request);
-    public partial ICollection<TenantResponse> MapToResponseCollection(IEnumerable<Tenant> request);
+    public partial IEnumerable<TenantResponse> MapToResponse(IEnumerable<Tenant> request);
 }

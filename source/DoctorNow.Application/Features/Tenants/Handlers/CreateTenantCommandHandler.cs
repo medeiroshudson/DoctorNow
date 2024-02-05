@@ -1,5 +1,6 @@
 using DoctorNow.Application.Abstractions.Messaging;
 using DoctorNow.Application.Features.Tenants.Commands;
+using DoctorNow.Application.Features.Tenants.Contracts;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.SharedKernel.Interfaces;
 using DoctorNow.Domain.Tenants;
@@ -7,9 +8,9 @@ using DoctorNow.Domain.Tenants;
 namespace DoctorNow.Application.Features.Tenants.Handlers;
 
 internal sealed class CreateTenantCommandHandler(IUnitOfWork unitOfWork, ITenantRepository tenantRepository)
-    : ICommandHandler<CreateTenantCommand, Tenant, Error>
+    : ICommandHandler<CreateTenantCommand, TenantResponse, Error>
 {
-    public async Task<Result<Tenant, Error>> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
+    public async Task<Result<TenantResponse, Error>> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
     {
         var tenant = Tenant.Create(request.Name, request.DocumentNumber);
 
@@ -22,6 +23,9 @@ internal sealed class CreateTenantCommandHandler(IUnitOfWork unitOfWork, ITenant
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return tenant;
+        var mapped = new TenantMapper()
+            .MapToResponse(tenant);
+
+        return mapped;
     }
 }
