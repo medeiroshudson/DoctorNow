@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DoctorNow.Application.Abstractions.Messaging;
 
-public interface IQuery<TResponse> : IRequest<Result<TResponse>>
+public interface IQuery<TResponse, TError> : IRequest<Result<TResponse, TError>>
 {
     
 }

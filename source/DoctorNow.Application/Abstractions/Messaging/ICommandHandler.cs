@@ -6,11 +6,11 @@ namespace DoctorNow.Application.Abstractions.Messaging;
 public interface ICommandHandler<in TCommand>
     where TCommand : ICommand
 {
-    Task<Result> Handle(TCommand command, CancellationToken cancellationToken);
+    
 }
 
-public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, Result<TResponse>>
-    where TCommand : ICommand<TResponse>
+public interface ICommandHandler<in TCommand, TResponse, TError> : IRequestHandler<TCommand, Result<TResponse, TError>>
+    where TCommand : ICommand<TResponse, TError>
 {
     
 }

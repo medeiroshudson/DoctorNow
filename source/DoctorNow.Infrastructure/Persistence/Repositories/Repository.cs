@@ -16,7 +16,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 
     public IQueryable<TEntity> Get() => _dbContext.Set<TEntity>().AsNoTracking().AsQueryable();
 
-    public async Task<ICollection<TEntity>> GetAllAsync(CancellationToken cancellationToken = default) =>
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default) =>
         await Get().ToListAsync(cancellationToken);
     
     public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default) =>

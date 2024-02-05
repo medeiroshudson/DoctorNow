@@ -1,6 +1,4 @@
 using Autofac;
-using DoctorNow.Application.Abstractions;
-using DoctorNow.Application.Abstractions.Mapping;
 using DoctorNow.Application.Abstractions.Messaging;
 using ApplicationLayer = DoctorNow.Application.Application;
 
@@ -13,11 +11,11 @@ public class ApplicationModule : Module
         var assembly = ApplicationLayer.GetExecutingAssembly();
         
         builder.RegisterAssemblyTypes(assembly)
-            .AsClosedTypesOf(typeof(ICommandHandler<,>))
+            .AsClosedTypesOf(typeof(ICommandHandler<,,>))
             .AsImplementedInterfaces();
         
         builder.RegisterAssemblyTypes(assembly)
-            .AsClosedTypesOf(typeof(IQueryHandler<,>))
+            .AsClosedTypesOf(typeof(IQueryHandler<,,>))
             .AsImplementedInterfaces();
         
         builder.RegisterAssemblyTypes(assembly)

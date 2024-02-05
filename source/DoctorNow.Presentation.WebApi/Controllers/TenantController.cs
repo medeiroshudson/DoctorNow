@@ -11,7 +11,7 @@ namespace DoctorNow.Presentation.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TenantController(ISender sender, ILogger<TenantController> logger) : ControllerBase
+public class TenantController(ISender sender) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> Get()
@@ -19,11 +19,11 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         var query = new GetAllTenantsQuery();
         
         var result = await sender.Send(query);
-     
+        
         if (result.IsFailure) return HandleErrorResult(result.Error);
 
         var mapped = new TenantMapper()
-            .MapToResponseCollection(result.Value!);
+            .MapToResponseCollection(result.Data!);
 
         return StatusCode(StatusCodes.Status200OK, mapped);
     }
@@ -38,7 +38,7 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         if (result.IsFailure) return HandleErrorResult(result.Error);
 
         var mapped = new TenantMapper()
-            .MapToResponse(result.Value!);
+            .MapToResponse(result.Data!);
 
         return StatusCode(StatusCodes.Status200OK, mapped);
     }
@@ -53,7 +53,7 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         if (result.IsFailure) return HandleErrorResult(result.Error);
 
         var mapped = new TenantMapper()
-            .MapToResponse(result.Value!);
+            .MapToResponse(result.Data!);
 
         return StatusCode(StatusCodes.Status201Created, mapped);
     }
@@ -69,7 +69,7 @@ public class TenantController(ISender sender, ILogger<TenantController> logger) 
         if (result.IsFailure) return HandleErrorResult(result.Error);
 
         var mapped = new TenantMapper()
-            .MapToResponse(result.Value!);
+            .MapToResponse(result.Data!);
 
         return StatusCode(StatusCodes.Status200OK, mapped);
     }

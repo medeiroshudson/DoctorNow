@@ -7,6 +7,6 @@ public interface ICommand : IRequest
 {
 }
 
-public interface ICommand<TResponse> : IRequest<Result<TResponse>>
+public interface ICommand<TResponse, TError> : IRequest<Result<TResponse, TError>>
 {
 }

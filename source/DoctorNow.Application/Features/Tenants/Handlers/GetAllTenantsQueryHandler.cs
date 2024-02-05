@@ -5,19 +5,13 @@ using DoctorNow.Domain.Tenants;
 
 namespace DoctorNow.Application.Features.Tenants.Handlers;
 
-public sealed class GetAllTenantsQueryHandler : IQueryHandler<GetAllTenantsQuery, ICollection<Tenant>>
+public sealed class GetAllTenantsQueryHandler(ITenantRepository tenantRepository)
+    : IQueryHandler<GetAllTenantsQuery, IEnumerable<Tenant>, Error>
 {
-    private readonly ITenantRepository _tenantRepository;
+    public async Task<Result<IEnumerable<Tenant>, Error>> Handle(GetAllTenantsQuery request, CancellationToken cancellationToken)
+    {
+        var tenants = await tenantRepository.GetAllAsync(cancellationToken);
 
-    public GetAllTenantsQueryHandler(ITenantRepository tenantRepository)
-    {
-        _tenantRepository = tenantRepository;
-    }
-    
-    public async Task<Result<ICollection<Tenant>>> Handle(GetAllTenantsQuery request, CancellationToken cancellationToken)
-    {
-        var tenants = await _tenantRepository.GetAllAsync(cancellationToken);
-        
-        return Result.Success(tenants);
+        return tenants.ToList();
     }
 }

@@ -1,40 +1,34 @@
 namespace DoctorNow.Domain.SharedKernel;
 
-public abstract class BaseResult
+public sealed class Result<TValue, TError>
 {
-    protected internal BaseResult(bool success, Error error)
-    {
-        if (success && error != Error.None || !success && error == Error.None) 
-            throw new ArgumentException("Invalid error", nameof(error));
+    public readonly TValue? Data;
+    public readonly TError Error;
 
-        IsSuccess = success;
-        Error = error;
-    }
-    
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
-    public Error Error { get; }
-}
 
-public class Result : BaseResult
-{
-    protected internal Result(bool success, Error error)
-        : base(success, error)
-    { }
-
-    public static Result Success() => new(true, Error.None);
-    public static Result<TValue> Success<TValue>(TValue value) => new(value, true, Error.None);
-    public static Result Failure(Error error) => new(false, error);
-    public static Result<TValue> Failure<TValue>(Error error) => new(default!, false, error);
-}
-
-public class Result<TValue> : BaseResult
-{
-    protected internal Result(TValue value, bool success, Error error)
-        : base(success, error)
+    private Result(TValue data)
     {
-        Value = value;
+        Data = data;
+        Error = default!;
+        IsSuccess = true;
+    }
+
+    private Result(TError error)
+    {
+        Data = default;
+        Error = error;
+        IsSuccess = false;
     }
     
-    public TValue? Value { get; }
+    public static Result<TValue, TError> Success(TValue data) => new Result<TValue, TError>(data);
+    public static Result<TValue, TError> Failure(TError error) => new Result<TValue, TError>(error);
+    
+    public static implicit operator Result<TValue, TError>(TValue data) => Success(data);
+    public static implicit operator Result<TValue, TError>(TError error) => Failure(error);
+
+    public Result<TValue, TError> Match(
+        Func<TValue, Result<TValue, TError>> success,
+        Func<TError, Result<TValue, TError>> failure) => IsSuccess ? success(Data!) : failure(Error!);
 }

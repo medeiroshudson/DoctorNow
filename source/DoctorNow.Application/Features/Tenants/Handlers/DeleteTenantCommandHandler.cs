@@ -6,30 +6,21 @@ using DoctorNow.Domain.Tenants;
 
 namespace DoctorNow.Application.Features.Tenants.Handlers;
 
-internal sealed class DeleteTenantCommandHandler : ICommandHandler<DeleteTenantCommand, bool>
+internal sealed class DeleteTenantCommandHandler(IUnitOfWork unitOfWork, ITenantRepository tenantRepository)
+    : ICommandHandler<DeleteTenantCommand, bool, Error>
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly ITenantRepository _tenantRepository;
+    public async Task<Result<bool, Error>> Handle(DeleteTenantCommand request, CancellationToken cancellationToken)
+    {
+        var tenant = await tenantRepository.GetByIdAsync(request.Id, cancellationToken);
 
-    public DeleteTenantCommandHandler(IUnitOfWork unitOfWork, ITenantRepository tenantRepository)
-    {
-        _unitOfWork = unitOfWork;
-        _tenantRepository = tenantRepository;
-    }
-    
-    public async Task<Result<bool>> Handle(DeleteTenantCommand request, CancellationToken cancellationToken)
-    {
-        var tenant = await _tenantRepository.GetByIdAsync(request.Id, cancellationToken);
-        
-        if (tenant is null)
-            return Result.Failure<bool>(TenantErrors.NotFound(request.Id));
+        if (tenant is null) return TenantErrors.NotFound(request.Id);
 
         tenant.Delete();
         
-        await _tenantRepository.DeleteAsync(tenant.Id, cancellationToken);
+        await tenantRepository.DeleteAsync(tenant.Id, cancellationToken);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+        await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(true);
+        return true;
     }
 }

@@ -10,5 +10,5 @@ public static class TenantErrors
     
     public const string DocumentNumberNotUniqueErrorCode = "Tenant.DocumentNumberNotUnique";
     public static Error DocumentNumberNotUnique(string documentNumber) =>
-        new(DocumentNumberNotUniqueErrorCode, $"The Tenant document number {documentNumber} is not unique.");
+        new(DocumentNumberNotUniqueErrorCode, $"The Tenant document number '{documentNumber}' is not unique.");
 }
