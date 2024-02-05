@@ -42,21 +42,19 @@ public class AppDbContext(IOptions<DatabaseOptions> databaseOptions) : DbContext
 
         foreach (var entityEntry in entities)
         {
-            var entity = (Entity)entityEntry.Entity;
-
             switch (entityEntry.State)
             {
                 case EntityState.Added:
-                    entity.CreatedAt = DateTime.UtcNow;
+                    entityEntry.CurrentValues[nameof(Entity.CreatedAt)] = DateTime.UtcNow;
                     break;
                 case EntityState.Modified:
-                    entityEntry.Property(nameof(entity.CreatedAt)).IsModified = false;
-                    entityEntry.CurrentValues[nameof(entity.UpdatedAt)] = DateTime.UtcNow;
+                    entityEntry.Property(nameof(Entity.CreatedAt)).IsModified = false;
+                    entityEntry.CurrentValues[nameof(Entity.UpdatedAt)] = DateTime.UtcNow;
                     break;
                 case EntityState.Deleted:
                     entityEntry.State = EntityState.Modified;
-                    entityEntry.CurrentValues[nameof(entity.Deleted)] = true;
-                    entityEntry.CurrentValues[nameof(entity.DeletedAt)] = DateTime.UtcNow;
+                    entityEntry.CurrentValues[nameof(Entity.Deleted)] = true;
+                    entityEntry.CurrentValues[nameof(Entity.DeletedAt)] = DateTime.UtcNow;
                     break;
             }
         }
