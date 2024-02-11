@@ -16,8 +16,9 @@
 
 ## Features Level
 - [X] HealthCheck endpoint;
-- [ ] Implementing Authentication;
-- [ ] Implementing Authorization;
+- [ ] Api Authentication;
+- [ ] Api Authorization;
+- [ ] Api Filtering, Sorting and Pagination;
 
 # EF Core Commands
 
