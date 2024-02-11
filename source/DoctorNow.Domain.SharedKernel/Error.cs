@@ -10,10 +10,10 @@ public enum ErrorType
 
 public record Error
 {
-    private Error(string Code, ErrorType Type, string? Message = null)
+    private Error(ErrorType Type, string Code, string? Message = null)
     {
-        this.Code = Code;
         this.Type = Type;
+        this.Code = Code;
         this.Message = Message;
     }
     
@@ -21,8 +21,8 @@ public record Error
     public string Code { get; init; }
     public string? Message { get; init; }
     
-    public static Error Failure(string code, string message) => new(code, ErrorType.Failure, message);
-    public static Error Validation(string code, string message) => new(code, ErrorType.Validation, message);
-    public static Error NotFound(string code, string message) => new(code, ErrorType.NotFound, message);
-    public static Error Conflict(string code, string message) => new(code, ErrorType.Conflict, message);
+    public static Error Failure(string code, string message) => new(ErrorType.Failure, code, message);
+    public static Error Validation(string code, string message) => new(ErrorType.Validation, code, message);
+    public static Error NotFound(string code, string message) => new(ErrorType.NotFound, code, message);
+    public static Error Conflict(string code, string message) => new(ErrorType.Conflict, code, message);
 }
