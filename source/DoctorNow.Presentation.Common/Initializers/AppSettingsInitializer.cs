@@ -2,7 +2,6 @@ using DoctorNow.Domain.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace DoctorNow.Presentation.Common.Initializers;
 
@@ -14,9 +13,9 @@ public static class AppSettingsInitializer
         var config = applicationBuilder.Configuration;
 
         applicationBuilder.Configuration
-            .AddEnvironmentVariables()
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables();
 
         applicationBuilder.Services
             .AddOptions<DatabaseOptions>()
