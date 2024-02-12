@@ -1,9 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using DoctorNow.Presentation.Common.Extensions;
 using DoctorNow.Application.Features.Tenants.Queries;
 using DoctorNow.Application.Features.Tenants.Commands;
 using DoctorNow.Application.Features.Tenants.Contracts;
-using DoctorNow.Presentation.Common.Extensions;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
 
