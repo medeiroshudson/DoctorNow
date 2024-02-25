@@ -8,7 +8,7 @@ public class ApplicationModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        var assembly = ApplicationLayer.GetExecutingAssembly();
+        var assembly = ApplicationLayer.Assembly;
         
         builder.RegisterAssemblyTypes(assembly)
             .AsClosedTypesOf(typeof(ICommandHandler<,,>))

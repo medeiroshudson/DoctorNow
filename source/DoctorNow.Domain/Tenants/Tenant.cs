@@ -1,10 +1,15 @@
 ﻿using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.Tenants.Events;
+using DoctorNow.Domain.Users;
 
 namespace DoctorNow.Domain.Tenants;
 
 public class Tenant : Entity
 {
+    private readonly List<User> _users = [];
+    
+    protected Tenant() { }
+    
     private Tenant(Guid id, string name, string documentNumber, TenantStatus status) : base(id)
     {
         this.Name = name;
@@ -15,6 +20,8 @@ public class Tenant : Entity
     public string Name { get; private set; }
     public string DocumentNumber { get; private set; }
     public TenantStatus Status { get; private set; }
+
+    public virtual IReadOnlyCollection<User> Users => _users;
     
     public static Tenant Create(string name, string documentNumber)
     {

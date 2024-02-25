@@ -25,6 +25,7 @@ public static class ResultExtensions
                 ErrorType.Validation => CreateFailureResult(StatusCodes.Status400BadRequest, failure),
                 ErrorType.NotFound => CreateFailureResult(StatusCodes.Status404NotFound, failure),
                 ErrorType.Conflict => CreateFailureResult(StatusCodes.Status409Conflict, failure),
+                ErrorType.Unauthorized => CreateFailureResult(StatusCodes.Status401Unauthorized, failure),
                 _ => CreateFailureResult(StatusCodes.Status500InternalServerError, failure)
             };
             

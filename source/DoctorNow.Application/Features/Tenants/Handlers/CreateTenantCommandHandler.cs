@@ -14,7 +14,8 @@ internal sealed class CreateTenantCommandHandler(IUnitOfWork unitOfWork, ITenant
     {
         var tenant = Tenant.Create(request.Name, request.DocumentNumber);
 
-        var isUniqueDocumentNumber = await tenantRepository.IsDocumentNumberUnique(tenant.DocumentNumber);
+        var isUniqueDocumentNumber = await tenantRepository.IsUnique(
+            t => t.DocumentNumber == tenant.DocumentNumber);
         
         if (isUniqueDocumentNumber == false) 
             return TenantErrors.DocumentNumberNotUnique(tenant.DocumentNumber);

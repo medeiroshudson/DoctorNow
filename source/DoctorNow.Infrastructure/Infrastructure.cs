@@ -4,5 +4,5 @@ namespace DoctorNow.Infrastructure;
 
 public static class Infrastructure
 {
-    public static Assembly GetExecutingAssembly() => Assembly.GetExecutingAssembly();
+    public static Assembly Assembly => Assembly.GetExecutingAssembly();
 }

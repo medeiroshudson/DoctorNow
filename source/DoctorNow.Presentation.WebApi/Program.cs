@@ -9,9 +9,10 @@ builder.ConfigureAppSettings();
 builder.ConfigureAutofacContainer();
 
 builder.Services.AddControllers();
-builder.Services.AddSwaggerExplorer()
-    .InitializeDbContext(configuration)
+builder.Services.ConfigureSwaggerExplorer()
     .ConfigureHealthChecks()
+    .ConfigureJwtAuthentication()
+    .ConfigureDbContext(configuration)
     .AddMediatR();
 
 var app = builder.Build();
@@ -27,10 +28,12 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
+app.UseHealthChecks("/health");
+
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseHealthChecks("/health");
 
 app.Run();

@@ -4,8 +4,8 @@ namespace DoctorNow.Domain.Tenants;
 
 public static class TenantErrors
 {
-    public const string NotFoundErrorCode = "Tenant.NotFound";
-    public const string DocumentNumberNotUniqueErrorCode = "Tenant.DocumentNumberNotUnique";
+    private const string NotFoundErrorCode = "Tenant.NotFound";
+    private const string DocumentNumberNotUniqueErrorCode = "Tenant.DocumentNumberNotUnique";
     
     public static Error NotFound(Guid tenantId) =>
         Error.NotFound(NotFoundErrorCode, $"The Tenant with Id '{tenantId}' was not found.");

@@ -7,7 +7,7 @@ namespace DoctorNow.Presentation.Common.Initializers;
 
 public static class DatabaseInitializer
 {
-    public static IServiceCollection InitializeDbContext(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>();
 

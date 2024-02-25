@@ -9,9 +9,6 @@ public class TenantConfiguration : BaseEntityConfiguration<Tenant>
 {
     public override void Configure(EntityTypeBuilder<Tenant> builder)
     {
-        // run base configurations
-        base.Configure(builder);
-        
         builder.HasKey(e => e.Id);
 
         builder.HasIndex(e => new { e.DocumentNumber, e.Deleted })
@@ -31,5 +28,12 @@ public class TenantConfiguration : BaseEntityConfiguration<Tenant>
             .HasConversion(
                 v => Convert.ToString(v),
                 v => Enum.Parse<TenantStatus>(v ?? string.Empty));
+
+        builder.HasMany(e => e.Users)
+            .WithOne(u => u.Tenant)
+            .HasForeignKey(u => u.TenantId)
+            .OnDelete(DeleteBehavior.Restrict);
+        
+        base.Configure(builder);
     }
 }

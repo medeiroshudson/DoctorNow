@@ -1,7 +1,9 @@
 using DoctorNow.Domain.Options;
 using DoctorNow.Domain.SharedKernel;
 using DoctorNow.Domain.Tenants;
+using DoctorNow.Domain.Users;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace DoctorNow.Infrastructure.Persistence.Contexts;
@@ -10,12 +12,15 @@ public class AppDbContext(IOptions<DatabaseOptions> databaseOptions) : DbContext
 {
     private readonly DatabaseOptions _databaseOptions = databaseOptions.Value;
     
-    public DbSet<Tenant> Tenants => Set<Tenant>();
+    public DbSet<Tenant> Tenants { get; set; }
+    public DbSet<User> Users { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder.IsConfigured) return;
         
+        optionsBuilder.UseLazyLoadingProxies();
+
         optionsBuilder.UseNpgsql(_databaseOptions.ConnectionString, actions =>
         {
             actions.CommandTimeout(_databaseOptions.CommandTimeout);
@@ -24,6 +29,12 @@ public class AppDbContext(IOptions<DatabaseOptions> databaseOptions) : DbContext
 
         optionsBuilder.EnableSensitiveDataLogging(_databaseOptions.SensitiveDataLogging)
             .EnableDetailedErrors(_databaseOptions.EnableDetailedErros);
+
+        if (_databaseOptions.SensitiveDataLogging)
+        {
+            optionsBuilder.LogTo(
+                Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name });
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>

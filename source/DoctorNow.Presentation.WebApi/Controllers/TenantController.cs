@@ -4,14 +4,14 @@ using DoctorNow.Presentation.Common.Extensions;
 using DoctorNow.Application.Features.Tenants.Queries;
 using DoctorNow.Application.Features.Tenants.Commands;
 using DoctorNow.Application.Features.Tenants.Contracts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoctorNow.Presentation.WebApi.Controllers;
 
-[ApiController]
-[Route("[controller]")]
+[ApiController, Route("[controller]")]
 public class TenantController(IMediator mediator) : ControllerBase
 {
-    [HttpGet]
+    [Authorize, HttpGet]
     public async Task<IActionResult > Get()
     {
         var result = await mediator.Send(
@@ -22,7 +22,7 @@ public class TenantController(IMediator mediator) : ControllerBase
             : StatusCode(StatusCodes.Status200OK, result.Data);
     }
     
-    [HttpGet("{id:Guid}")]
+    [Authorize, HttpGet("{id:Guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
         var result = await mediator.Send(
@@ -33,7 +33,7 @@ public class TenantController(IMediator mediator) : ControllerBase
             : StatusCode(StatusCodes.Status200OK, result.Data);
     }
     
-    [HttpPost]
+    [Authorize, HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateTenantRequest request)
     {
         var command = new CreateTenantCommand(
@@ -46,7 +46,7 @@ public class TenantController(IMediator mediator) : ControllerBase
             : StatusCode(StatusCodes.Status201Created, result.Data);
     }
     
-    [HttpPut("{id:Guid}")]
+    [Authorize, HttpPut("{id:Guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateTenantRequest request)
     {
         var command = new UpdateTenantCommand(
@@ -59,7 +59,7 @@ public class TenantController(IMediator mediator) : ControllerBase
             : StatusCode(StatusCodes.Status200OK, result.Data);
     }
     
-    [HttpDelete("{id:Guid}")]
+    [Authorize, HttpDelete("{id:Guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
         var result = await mediator.Send(

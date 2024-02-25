@@ -4,5 +4,5 @@ namespace DoctorNow.Application;
 
 public static class Application
 {
-    public static Assembly GetExecutingAssembly() => Assembly.GetExecutingAssembly();
+    public static Assembly Assembly => Assembly.GetExecutingAssembly();
 }
