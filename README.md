@@ -21,6 +21,13 @@
 - [ ] Api Authorization;
 - [ ] Api Filtering, Sorting and Pagination;
 
+## Features - Mobile
+- [X] Implement Wireframe Screens;
+- [ ] Implement Home Dashboard wireframe;
+- [ ] Implement Patients view for Doctor;
+- [ ] Implement Settings view;
+
+
 # EF Commands
 
 ## Add Migration

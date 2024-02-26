@@ -1,0 +1,105 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoctorNow.Presentation.MobileApp.App">
+    <Application.Resources>
+
+        <Color x:Key="PrimaryColor">#0b2027</Color>
+        <Color x:Key="PrimaryVariantColor">#184b4e</Color>
+        <Color x:Key="SecondaryColor">#70a9a1</Color>
+        <Color x:Key="SecondaryVariantColor">#cfd7c7</Color>
+        <Color x:Key="BorderColor">Transparent</Color>
+        <Color x:Key="LightBorderColor">#d5d5d5</Color>
+        <Color x:Key="LightTextColor">#d5d5d5</Color>
+        <Color x:Key="DarkTextColor">#08191b</Color>
+        <Color x:Key="PageBackgroundColor">#F1EFF0</Color>
+
+        <!-- Default Bg Color for Content and Navigation Pages -->
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="NavigationPage.HasNavigationBar" Value="False" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+        </Style>
+
+        <!-- Label Styles -->
+        <Style TargetType="Label" x:Key="BaseBoldLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="BaseMediumLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="BaseRegularLabelStyle">
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="FontAutoScalingEnabled" Value="False" />
+            <Setter Property="FontFamily" Value="RegularFont" />
+        </Style>
+
+        <!-- Entry Styles -->
+        <Style TargetType="Entry" x:Key="EntryStyle">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="RegularFont" />
+            <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            <Setter Property="PlaceholderColor" Value="{StaticResource DarkTextColor}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+        </Style>
+
+        <!-- Button Styles -->
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="Padding" Value="64,0" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="CornerRadius" Value="26" />
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryVariantColor}" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+        </Style>
+
+        <!-- Login Page Styles -->
+        <Style TargetType="Grid" x:Key="LoginPageGridLayoutStyle">
+            <!--<Setter Property="BackgroundColor" Value="#30959b" />-->
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="LoginPageHeaderStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="LoginPageTextStyle" BasedOn="{StaticResource BaseRegularLabelStyle}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="LineHeight" Value="1.15" />
+            <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+        </Style>
+
+        <Style TargetType="Frame" x:Key="LoginPageFrameIconStyle">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <Style TargetType="Image" x:Key="LoginPageIconStyle">
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="WidthRequest" Value="25" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style TargetType="Frame" x:Key="LoginPageFrameEntryStyle">
+            <Setter Property="Padding" Value="8, 0, 0, 0" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+    </Application.Resources>
+</Application>

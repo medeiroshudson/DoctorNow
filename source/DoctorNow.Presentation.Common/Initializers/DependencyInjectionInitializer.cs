@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using DoctorNow.Infrastructure.CrossCutting;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.Maui.Hosting;
 
 namespace DoctorNow.Presentation.Common.Initializers;
 
@@ -17,5 +18,10 @@ public static class DependencyInjectionInitializer
     {
         applicationBuilder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
             .ConfigureContainer<ContainerBuilder>(container => container.Initialize());
+    }
+
+    public static void ConfigureAutofacContainer(this MauiAppBuilder builder)
+    { 
+        builder.ConfigureContainer(new AutofacServiceProviderFactory(), container => container.Initialize());
     }
 }

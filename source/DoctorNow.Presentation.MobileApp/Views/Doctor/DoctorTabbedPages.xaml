@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
+            xmlns:doctor="clr-namespace:DoctorNow.Presentation.MobileApp.Views.Doctor"
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            x:Class="DoctorNow.Presentation.MobileApp.Views.Doctor.DoctorTabbedPages"
+            BarBackgroundColor="{StaticResource PrimaryColor}"
+            BarTextColor="{StaticResource SecondaryColor}"
+            SelectedTabColor="{StaticResource SecondaryColor}"
+            UnselectedTabColor="{StaticResource PrimaryVariantColor}">
+    <doctor:DoctorHomePage Title="Home" IconImageSource="icon_home.svg" />
+    <doctor:DoctorPatientsPage Title="Patients" IconImageSource="icon_patients.svg"/>
+    <views:SettingsPage Title="Settings" IconImageSource="icon_settings.svg"/>
+</TabbedPage>

@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{4051F2BE-AB52-42B2-9795-21F466D437E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{05D4DC80-8C6D-4605-9406-1636D617E40F}"
@@ -8,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{6EFABA79-D1EA-4E51-80B6-D29BC15935BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Application", "source\DoctorNow.Application\DoctorNow.Application.csproj", "{DF4BE598-5F43-4C30-AB1C-65A107B21443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Application", "source\DoctorNow.Application\DoctorNow.Application.csproj", "{DF4BE598-5F43-4C30-AB1C-65A107B21443}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Domain", "source\DoctorNow.Domain\DoctorNow.Domain.csproj", "{A97ECF83-9CD8-4372-86BB-AD2FE183FC33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Domain", "source\DoctorNow.Domain\DoctorNow.Domain.csproj", "{A97ECF83-9CD8-4372-86BB-AD2FE183FC33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Infrastructure", "source\DoctorNow.Infrastructure\DoctorNow.Infrastructure.csproj", "{A239768D-D20D-4E38-B72A-3D1778FB96D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Infrastructure", "source\DoctorNow.Infrastructure\DoctorNow.Infrastructure.csproj", "{A239768D-D20D-4E38-B72A-3D1778FB96D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Domain.SharedKernel", "source\DoctorNow.Domain.SharedKernel\DoctorNow.Domain.SharedKernel.csproj", "{201109FC-E542-45C3-8997-32DEDB8B1FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Domain.SharedKernel", "source\DoctorNow.Domain.SharedKernel\DoctorNow.Domain.SharedKernel.csproj", "{201109FC-E542-45C3-8997-32DEDB8B1FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Infrastructure.CrossCutting", "source\DoctorNow.Infrastructure.CrossCutting\DoctorNow.Infrastructure.CrossCutting.csproj", "{005A27BC-8F0D-488F-9F4B-DB814BF1AC85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Infrastructure.CrossCutting", "source\DoctorNow.Infrastructure.CrossCutting\DoctorNow.Infrastructure.CrossCutting.csproj", "{005A27BC-8F0D-488F-9F4B-DB814BF1AC85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Presentation.Common", "source\DoctorNow.Presentation.Common\DoctorNow.Presentation.Common.csproj", "{AD8204CD-CF64-4FE3-99A0-32C480FD771D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Presentation.Common", "source\DoctorNow.Presentation.Common\DoctorNow.Presentation.Common.csproj", "{AD8204CD-CF64-4FE3-99A0-32C480FD771D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Presentation.WebApi", "source\DoctorNow.Presentation.WebApi\DoctorNow.Presentation.WebApi.csproj", "{71CC5EBD-1109-4171-95AF-CA30237C5D2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorNow.Presentation.WebApi", "source\DoctorNow.Presentation.WebApi\DoctorNow.Presentation.WebApi.csproj", "{71CC5EBD-1109-4171-95AF-CA30237C5D2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40CCBEDE-CB92-47A9-93B9-E32634B904C8}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,19 +32,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorNow.Presentation.MobileApp", "source\DoctorNow.Presentation.MobileApp\DoctorNow.Presentation.MobileApp.csproj", "{1237F0E7-CF93-4494-889E-CAFBFF92AD67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DF4BE598-5F43-4C30-AB1C-65A107B21443} = {05D4DC80-8C6D-4605-9406-1636D617E40F}
-		{A97ECF83-9CD8-4372-86BB-AD2FE183FC33} = {6EFABA79-D1EA-4E51-80B6-D29BC15935BD}
-		{A239768D-D20D-4E38-B72A-3D1778FB96D2} = {7424F1D8-8728-4198-9D05-E11102545E4C}
-		{201109FC-E542-45C3-8997-32DEDB8B1FA1} = {6EFABA79-D1EA-4E51-80B6-D29BC15935BD}
-		{005A27BC-8F0D-488F-9F4B-DB814BF1AC85} = {7424F1D8-8728-4198-9D05-E11102545E4C}
-		{AD8204CD-CF64-4FE3-99A0-32C480FD771D} = {4051F2BE-AB52-42B2-9795-21F466D437E4}
-		{71CC5EBD-1109-4171-95AF-CA30237C5D2B} = {4051F2BE-AB52-42B2-9795-21F466D437E4}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DF4BE598-5F43-4C30-AB1C-65A107B21443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +68,24 @@ Global
 		{71CC5EBD-1109-4171-95AF-CA30237C5D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71CC5EBD-1109-4171-95AF-CA30237C5D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71CC5EBD-1109-4171-95AF-CA30237C5D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF4BE598-5F43-4C30-AB1C-65A107B21443} = {05D4DC80-8C6D-4605-9406-1636D617E40F}
+		{A97ECF83-9CD8-4372-86BB-AD2FE183FC33} = {6EFABA79-D1EA-4E51-80B6-D29BC15935BD}
+		{A239768D-D20D-4E38-B72A-3D1778FB96D2} = {7424F1D8-8728-4198-9D05-E11102545E4C}
+		{201109FC-E542-45C3-8997-32DEDB8B1FA1} = {6EFABA79-D1EA-4E51-80B6-D29BC15935BD}
+		{005A27BC-8F0D-488F-9F4B-DB814BF1AC85} = {7424F1D8-8728-4198-9D05-E11102545E4C}
+		{AD8204CD-CF64-4FE3-99A0-32C480FD771D} = {4051F2BE-AB52-42B2-9795-21F466D437E4}
+		{71CC5EBD-1109-4171-95AF-CA30237C5D2B} = {4051F2BE-AB52-42B2-9795-21F466D437E4}
+		{1237F0E7-CF93-4494-889E-CAFBFF92AD67} = {4051F2BE-AB52-42B2-9795-21F466D437E4}
 	EndGlobalSection
 EndGlobal
