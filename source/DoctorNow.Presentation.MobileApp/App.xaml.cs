@@ -8,7 +8,7 @@ namespace DoctorNow.Presentation.MobileApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new LoginPage();
         }
     }
 }

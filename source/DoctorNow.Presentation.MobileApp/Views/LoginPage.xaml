@@ -3,7 +3,9 @@
 <views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
-                x:Class="DoctorNow.Presentation.MobileApp.Views.LoginPage">
+                xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
+                x:Class="DoctorNow.Presentation.MobileApp.Views.LoginPage"
+                x:DataType="viewModels:LoginViewModel">
     <Grid Style="{StaticResource LoginPageGridLayoutStyle}" 
           IgnoreSafeArea="{OnPlatform Android=False, iOS=True}">
     <Image
@@ -56,7 +58,7 @@
                   Placeholder="Email Address"
                   Keyboard="Email"
                   ClearButtonVisibility="WhileEditing"
-                  Text="{Binding Username}"
+                  Text="{Binding Email}"
                   Style="{StaticResource EntryStyle}"
                   HorizontalOptions="FillAndExpand" />
           </Frame>
@@ -84,7 +86,7 @@
               Style="{StaticResource ButtonStyle}"
               Text="Sign In"
               HorizontalOptions="Center"
-              Clicked="OnClicked_Login"/>
+              Command="{Binding AuthenticateCommand}" />
         </StackLayout>
 
         <Label

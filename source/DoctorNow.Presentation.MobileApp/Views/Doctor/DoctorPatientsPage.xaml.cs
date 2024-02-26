@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DoctorNow.Presentation.MobileApp.ViewModels;
 
 namespace DoctorNow.Presentation.MobileApp.Views.Doctor;
 
@@ -10,10 +11,11 @@ public partial class DoctorPatientsPage : BasePage
 {
     public DoctorPatientsPage()
     {
+        InitializeComponent();
     }
 
     public override void Build()
     {
-        InitializeComponent();
+        
     }
 }

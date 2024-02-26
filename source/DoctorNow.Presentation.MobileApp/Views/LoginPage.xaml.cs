@@ -1,4 +1,4 @@
-﻿using DoctorNow.Presentation.MobileApp.Views.Doctor;
+﻿using DoctorNow.Presentation.MobileApp.ViewModels;
 
 namespace DoctorNow.Presentation.MobileApp.Views;
 
@@ -6,14 +6,12 @@ public partial class LoginPage : BasePage
 {
     public LoginPage()
     {
-        
+        InitializeComponent();
+        BindingContext = new LoginViewModel();
     }
 
     public override void Build()
     {
-        InitializeComponent();
+        
     }
-
-    private void OnClicked_Login(object sender, EventArgs e)
-        => Application.Current!.MainPage = new NavigationPage(new DoctorTabbedPages());
 }

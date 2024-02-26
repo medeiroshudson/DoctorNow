@@ -3,20 +3,23 @@
 <views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
-          x:Class="DoctorNow.Presentation.MobileApp.Views.SettingsPage">
+          xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
+          x:Class="DoctorNow.Presentation.MobileApp.Views.SettingsPage"
+          x:DataType="viewModels:SettingsViewModel">
     <Grid IgnoreSafeArea="{OnPlatform Android=False, iOS=True}">
-        <StackLayout Orientation="Vertical" VerticalOptions="Center">
-            <Label Text="Settings !"
-                   FontSize="Large"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center" />
+        <Label Text="Settings !"
+               FontSize="Large"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center" />
 
+        <StackLayout Orientation="Vertical" VerticalOptions="End">
             <Button
                 Style="{StaticResource ButtonStyle}"
-                Text="Logout"
+                Text="Log Off"
                 VerticalOptions="End"
+                Margin="20"
                 HorizontalOptions="Center"
-                Clicked="OnClicked_Logout"/>
+                Command="{Binding LogoffCommand}"/>
         </StackLayout>
     </Grid>
 </views:BasePage>

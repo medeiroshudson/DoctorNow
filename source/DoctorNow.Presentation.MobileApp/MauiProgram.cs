@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
+using DoctorNow.Presentation.MobileApp.Services.Abstractions;
+using DoctorNow.Presentation.MobileApp.Services.Implementations;
+using DoctorNow.Presentation.MobileApp.ViewModels;
+using DoctorNow.Presentation.MobileApp.ViewModels.Doctor;
 
 namespace DoctorNow.Presentation.MobileApp
 {
@@ -9,7 +14,12 @@ namespace DoctorNow.Presentation.MobileApp
             var builder = MauiApp.CreateBuilder();
 
             builder.UseMauiApp<App>()
-                .ConfigureFonts();
+                .UseFonts()
+                .UseMauiCommunityToolkit();
+            
+            builder.Services.AddSingleton<DoctorPatientViewModel>();
+            
+            builder.Services.AddSingleton<IPatientService, PatientService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -18,7 +28,7 @@ namespace DoctorNow.Presentation.MobileApp
             return builder.Build();
         }
 
-        private static MauiAppBuilder ConfigureFonts(this MauiAppBuilder builder)
+        private static MauiAppBuilder UseFonts(this MauiAppBuilder builder)
         {
             builder.ConfigureFonts(fonts =>
             {

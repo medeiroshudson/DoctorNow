@@ -26,6 +26,9 @@
 - [ ] Implement Home Dashboard wireframe;
 - [ ] Implement Patients view for Doctor;
 - [ ] Implement Settings view;
+- [ ] Transition between pages;
+- [ ] Implement Api server;
+- [ ] Statefull pages;
 
 
 # EF Commands
