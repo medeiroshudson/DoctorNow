@@ -1,17 +1,13 @@
-﻿using DoctorNow.Presentation.MobileApp.ViewModels;
+﻿using DoctorNow.Presentation.MobileApp.Pages;
+using DoctorNow.Presentation.MobileApp.ViewModels;
 
 namespace DoctorNow.Presentation.MobileApp.Views;
 
 public partial class LoginPage : BasePage
 {
-    public LoginPage()
+    public LoginPage(LoginViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = new LoginViewModel();
-    }
-
-    public override void Build()
-    {
-        
+        BindingContext = viewModel;
     }
 }

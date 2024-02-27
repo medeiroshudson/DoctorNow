@@ -4,6 +4,8 @@ using DoctorNow.Presentation.MobileApp.Services.Abstractions;
 using DoctorNow.Presentation.MobileApp.Services.Implementations;
 using DoctorNow.Presentation.MobileApp.ViewModels;
 using DoctorNow.Presentation.MobileApp.ViewModels.Doctor;
+using DoctorNow.Presentation.MobileApp.Views;
+using DoctorNow.Presentation.MobileApp.Views.Doctor;
 
 namespace DoctorNow.Presentation.MobileApp
 {
@@ -17,6 +19,16 @@ namespace DoctorNow.Presentation.MobileApp
                 .UseFonts()
                 .UseMauiCommunityToolkit();
             
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<LoginViewModel>();
+            
+            builder.Services.AddSingleton<SettingsPage>();
+            builder.Services.AddSingleton<SettingsViewModel>();
+            
+            builder.Services.AddSingleton<DoctorHomePage>();
+            builder.Services.AddSingleton<DoctorHomeViewModel>();
+            
+            builder.Services.AddSingleton<DoctorPatientsPage>();
             builder.Services.AddSingleton<DoctorPatientViewModel>();
             
             builder.Services.AddSingleton<IPatientService, PatientService>();

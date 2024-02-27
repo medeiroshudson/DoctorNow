@@ -1,100 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
-                xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
-                x:Class="DoctorNow.Presentation.MobileApp.Views.LoginPage"
-                x:DataType="viewModels:LoginViewModel">
-    <Grid Style="{StaticResource LoginPageGridLayoutStyle}" 
-          IgnoreSafeArea="{OnPlatform Android=False, iOS=True}">
-    <Image
-        Source="img_doctor2.png"
-        VerticalOptions="Start"
-        HorizontalOptions="Center"
-        TranslationX="-80"
-        TranslationY="148"/>
-
-    <Image
-        Source="img_doctor3.png"
-        VerticalOptions="Start"
-        HorizontalOptions="Center"
-        TranslationX="80"
-        TranslationY="148"/>
-
-    <Border
-        Margin="20, 20, 20, 45"
-        Padding="24,32"
-        BackgroundColor="{StaticResource PageBackgroundColor}"
-        Stroke="{StaticResource LightBorderColor}"
-        HorizontalOptions="Fill"
-        VerticalOptions="End" >
-
-        <Border.StrokeShape>
-          <RoundRectangle CornerRadius="25"/>
-        </Border.StrokeShape>
-
-        <Border.Shadow>
-                <Shadow Brush="{StaticResource LightBorderColor}"
-                    Offset="10, 10"
-                    Radius="1"
-                    Opacity="0.8"/>
-        </Border.Shadow>
-
-            <VerticalStackLayout Spacing="16">
-        <Label
-            Text="Medical App"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Style="{StaticResource LoginPageHeaderStyle}" />
-
-        <StackLayout Orientation="Horizontal">
-          <Frame Style="{StaticResource LoginPageFrameIconStyle}">
-              <Image Source="icon_mail.svg" Style="{StaticResource LoginPageIconStyle}"/>
-          </Frame>
-
-            <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
-              <Entry
-                  Placeholder="Email Address"
-                  Keyboard="Email"
-                  ClearButtonVisibility="WhileEditing"
-                  Text="{Binding Email}"
-                  Style="{StaticResource EntryStyle}"
-                  HorizontalOptions="FillAndExpand" />
-          </Frame>
-        </StackLayout>
-
-        <StackLayout Orientation="Horizontal">
-            <Frame Style="{StaticResource LoginPageFrameIconStyle}">
-                <Image Source="icon_password.svg" Style="{StaticResource LoginPageIconStyle}"/>
-            </Frame>
-
-            <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
-              <Entry
-                  Placeholder="Password"
-                  ClearButtonVisibility="WhileEditing"
-                  IsPassword="True"
-                  Keyboard="Text"
-                  Text="{Binding Password}"
-                  Style="{StaticResource EntryStyle}"
-                  HorizontalOptions="FillAndExpand" />
-            </Frame>
-        </StackLayout>
-
-        <StackLayout Orientation="Vertical">
-          <Button
-              Style="{StaticResource ButtonStyle}"
-              Text="Sign In"
-              HorizontalOptions="Center"
-              Command="{Binding AuthenticateCommand}" />
-        </StackLayout>
-
-        <Label
-            Text="Forgot your password? Click Here!"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Style="{StaticResource LoginPageTextStyle}" />
-      </VerticalStackLayout>
-    </Border>
-  </Grid>
+<views:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
+	xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
+    x:Class="DoctorNow.Presentation.MobileApp.Views.LoginPage"
+    x:DataType="viewModels:LoginViewModel">
+    
+    <views:BasePage.Content>
+        <Grid Style="{StaticResource LoginPageGridLayoutStyle}">
+            <Image
+                Source="img_doctor2.png"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TranslationX="-80"
+                TranslationY="148"/>
+            
+            <Image
+                Source="img_doctor3.png"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TranslationX="80"
+                TranslationY="148"/>
+            
+            <Border
+                Margin="20, 20, 20, 45"
+                Padding="24,32"
+                BackgroundColor="{StaticResource PageBackgroundColor}"
+                Stroke="{StaticResource LightBorderColor}"
+                HorizontalOptions="Fill"
+                VerticalOptions="End" >
+                
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="25"/>
+                </Border.StrokeShape>
+                
+                <Border.Shadow>
+                    <Shadow Brush="{StaticResource LightBorderColor}"
+                            Offset="10, 10"
+                            Radius="1"
+                            Opacity="0.8"/>
+                </Border.Shadow>
+                
+                <VerticalStackLayout Spacing="16">
+                    <Label
+                    Text="Medical App"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LoginPageHeaderStyle}" />
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{StaticResource LoginPageFrameIconStyle}">
+                            <Image Source="icon_mail.svg" Style="{StaticResource LoginPageIconStyle}"/>
+                        </Frame>
+                        
+                        <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
+                            <Entry
+                                Placeholder="Email Address"
+                                Keyboard="Email"
+                                ClearButtonVisibility="WhileEditing"
+                                Text="{Binding Email}"
+                                Style="{StaticResource EntryStyle}"
+                                HorizontalOptions="FillAndExpand" />
+                        </Frame>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{StaticResource LoginPageFrameIconStyle}">
+                            <Image Source="icon_password.svg" Style="{StaticResource LoginPageIconStyle}"/>
+                        </Frame>
+                        
+                        <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
+                            <Entry
+                                Placeholder="Password"
+                                ClearButtonVisibility="WhileEditing"
+                                IsPassword="True"
+                                Keyboard="Text"
+                                Text="{Binding Password}"
+                                Style="{StaticResource EntryStyle}"
+                                HorizontalOptions="FillAndExpand" />
+                        </Frame>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Vertical">
+                        <Button
+                            Style="{StaticResource ButtonStyle}"
+                            Text="Sign In"
+                            HorizontalOptions="Center"
+                            Command="{Binding AuthenticateCommand}" />
+                    </StackLayout>
+                    
+                    <Label
+                    Text="Forgot your password? Click Here!"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LoginPageTextStyle}" />
+                    
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </views:BasePage.Content>
 </views:BasePage>

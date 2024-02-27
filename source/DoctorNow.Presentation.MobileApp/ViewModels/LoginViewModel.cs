@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DoctorNow.Presentation.MobileApp.ViewModels;
 
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel : BaseViewModel
 {
     [ObservableProperty]
     private string? _email;

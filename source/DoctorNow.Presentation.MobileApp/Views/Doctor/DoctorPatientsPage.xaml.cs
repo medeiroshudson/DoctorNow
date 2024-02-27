@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DoctorNow.Presentation.MobileApp.ViewModels;
+﻿using DoctorNow.Presentation.MobileApp.ViewModels.Doctor;
 
 namespace DoctorNow.Presentation.MobileApp.Views.Doctor;
 
 public partial class DoctorPatientsPage : BasePage
 {
-    public DoctorPatientsPage()
+    public DoctorPatientsPage(DoctorPatientViewModel viewModel)
     {
         InitializeComponent();
-    }
-
-    public override void Build()
-    {
-        
+        BindingContext = viewModel;
     }
 }

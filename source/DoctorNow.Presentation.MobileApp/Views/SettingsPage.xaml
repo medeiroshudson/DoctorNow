@@ -6,20 +6,22 @@
           xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
           x:Class="DoctorNow.Presentation.MobileApp.Views.SettingsPage"
           x:DataType="viewModels:SettingsViewModel">
-    <Grid IgnoreSafeArea="{OnPlatform Android=False, iOS=True}">
-        <Label Text="Settings !"
-               FontSize="Large"
-               VerticalTextAlignment="Center"
-               HorizontalTextAlignment="Center" />
+    <views:BasePage.Content>
+        <Grid>
+            <Label Text="Settings !"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" />
 
-        <StackLayout Orientation="Vertical" VerticalOptions="End">
-            <Button
-                Style="{StaticResource ButtonStyle}"
-                Text="Log Off"
-                VerticalOptions="End"
-                Margin="20"
-                HorizontalOptions="Center"
-                Command="{Binding LogoffCommand}"/>
-        </StackLayout>
-    </Grid>
+            <StackLayout Orientation="Vertical" VerticalOptions="End">
+                <Button
+                    Style="{StaticResource ButtonStyle}"
+                    Text="Log Off"
+                    VerticalOptions="End"
+                    Margin="20"
+                    HorizontalOptions="Center"
+                    Command="{Binding LogoffCommand}"/>
+            </StackLayout>
+        </Grid>
+    </views:BasePage.Content>
 </views:BasePage>

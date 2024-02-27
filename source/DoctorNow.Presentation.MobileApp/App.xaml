@@ -68,7 +68,6 @@
 
         <!-- Login Page Styles -->
         <Style TargetType="Grid" x:Key="LoginPageGridLayoutStyle">
-            <!--<Setter Property="BackgroundColor" Value="#30959b" />-->
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
         </Style>
 
