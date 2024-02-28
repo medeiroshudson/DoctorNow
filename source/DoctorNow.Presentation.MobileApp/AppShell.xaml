@@ -6,15 +6,15 @@
         xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
         xmlns:docViews="clr-namespace:DoctorNow.Presentation.MobileApp.Views.Doctor"
         NavBarIsVisible="False">
-    <TabBar Route="doctor">
+    <TabBar>
         <Tab Title="Home" Icon="icon_home.svg">
             <ShellContent ContentTemplate="{DataTemplate docViews:DoctorHomePage}" />
         </Tab>
-        
+
         <Tab Title="Patients" Icon="icon_patients.svg">
             <ShellContent ContentTemplate="{DataTemplate docViews:DoctorPatientsPage}" />
         </Tab>
-        
+
         <Tab Title="Settings" Icon="icon_settings.svg">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
         </Tab>

@@ -3,11 +3,71 @@
 <views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
-          xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels.Doctor"
+          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+          xmlns:local="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels.Doctor"
+          xmlns:models="clr-namespace:DoctorNow.Domain.Patients;assembly=DoctorNow.Domain"
           x:Class="DoctorNow.Presentation.MobileApp.Views.Doctor.DoctorPatientsPage"
-          x:DataType="viewModels:DoctorPatientViewModel">
-    <Label Text="Patients !"
-           FontSize="Large"
-           VerticalTextAlignment="Center"
-           HorizontalTextAlignment="Center" />
+          x:DataType="local:DoctorPatientsViewModel">
+    <views:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadDataCommand}" />
+    </views:BasePage.Behaviors>
+    
+    <views:BasePage.Content>
+        <AbsoluteLayout>
+            <StackLayout IsVisible="{Binding IsBusy}"
+                         AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Color="{StaticResource PrimaryColor}"/>
+            </StackLayout>
+            
+            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <SearchBar Margin="-10, 15, 10, 10" />
+
+                <CollectionView x:Name="CollectionView"
+                                SelectionMode="None"
+                                ItemsLayout="VerticalList"
+                                VerticalOptions="FillAndExpand"
+                                ItemsSource="{Binding Patients}">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout Padding="12">
+                            <Label HorizontalOptions="Center" Text="No data" />
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Patient">
+                            <Frame Margin="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        CommandParameter="{Binding Id}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:DoctorPatientsViewModel}}, Path=DetailsCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <Grid ColumnDefinitions=".2*, .8*">
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Source="icon_profile.svg" />
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Padding="5"
+                                                         VerticalOptions="Center">
+                                        <Label Text="{Binding Name}" FontSize="Medium" FontAttributes="Bold" />
+                                        <Label Text="{Binding Email}" FontAttributes="Italic" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </views:BasePage.Content>
 </views:BasePage>

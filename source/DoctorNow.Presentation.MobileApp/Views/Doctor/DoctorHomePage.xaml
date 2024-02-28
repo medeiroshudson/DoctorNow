@@ -5,7 +5,7 @@
           xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
           xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels.Doctor"
           x:Class="DoctorNow.Presentation.MobileApp.Views.Doctor.DoctorHomePage"
-          x:DataType="viewModels:DoctorPatientViewModel">
+          x:DataType="viewModels:DoctorPatientsViewModel">
     <Label Text="Home!"
            FontSize="Large"
            VerticalTextAlignment="Center"

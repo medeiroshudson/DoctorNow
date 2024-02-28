@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 	xmlns:viewModels="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels"
     x:Class="DoctorNow.Presentation.MobileApp.Views.LoginPage"
     x:DataType="viewModels:LoginViewModel">
@@ -28,12 +29,13 @@
                 Padding="24,32"
                 BackgroundColor="{StaticResource PageBackgroundColor}"
                 Stroke="{StaticResource LightBorderColor}"
+                StrokeShape="{ RoundRectangle CornerRadius=25 }"
                 HorizontalOptions="Fill"
                 VerticalOptions="End" >
                 
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="25"/>
-                </Border.StrokeShape>
+                <!-- <Border.StrokeShape> -->
+                <!--     <RoundRectangle CornerRadius="25"/> -->
+                <!-- </Border.StrokeShape> -->
                 
                 <Border.Shadow>
                     <Shadow Brush="{StaticResource LightBorderColor}"
@@ -51,10 +53,12 @@
                     
                     <StackLayout Orientation="Horizontal">
                         <Frame Style="{StaticResource LoginPageFrameIconStyle}">
-                            <Image Source="icon_mail.svg" Style="{StaticResource LoginPageIconStyle}"/>
+                            <Image Source="icon_mail.svg" 
+                                   Style="{StaticResource LoginPageIconStyle}"
+                                   Behaviors="{ toolkit:IconTintColorBehavior TintColor={StaticResource PrimaryColor} }"/>
                         </Frame>
                         
-                        <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
+                        <Border Style="{StaticResource LoginPageFrameEntryStyle}">
                             <Entry
                                 Placeholder="Email Address"
                                 Keyboard="Email"
@@ -62,15 +66,17 @@
                                 Text="{Binding Email}"
                                 Style="{StaticResource EntryStyle}"
                                 HorizontalOptions="FillAndExpand" />
-                        </Frame>
+                        </Border>
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Frame Style="{StaticResource LoginPageFrameIconStyle}">
-                            <Image Source="icon_password.svg" Style="{StaticResource LoginPageIconStyle}"/>
+                            <Image Source="icon_password.svg" 
+                                   Style="{StaticResource LoginPageIconStyle}"
+                                   Behaviors="{ toolkit:IconTintColorBehavior TintColor={StaticResource PrimaryColor} }" />
                         </Frame>
                         
-                        <Frame Style="{StaticResource LoginPageFrameEntryStyle}">
+                        <Border Style="{StaticResource LoginPageFrameEntryStyle}">
                             <Entry
                                 Placeholder="Password"
                                 ClearButtonVisibility="WhileEditing"
@@ -79,7 +85,7 @@
                                 Text="{Binding Password}"
                                 Style="{StaticResource EntryStyle}"
                                 HorizontalOptions="FillAndExpand" />
-                        </Frame>
+                        </Border>
                     </StackLayout>
                     
                     <StackLayout Orientation="Vertical">

@@ -18,7 +18,9 @@ namespace DoctorNow.Presentation.MobileApp
             builder.UseMauiApp<App>()
                 .UseFonts()
                 .UseMauiCommunityToolkit();
-            
+
+            builder.Services.AddSingleton<AppShell>();
+
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<LoginViewModel>();
             
@@ -29,8 +31,11 @@ namespace DoctorNow.Presentation.MobileApp
             builder.Services.AddSingleton<DoctorHomeViewModel>();
             
             builder.Services.AddSingleton<DoctorPatientsPage>();
-            builder.Services.AddSingleton<DoctorPatientViewModel>();
-            
+            builder.Services.AddSingleton<DoctorPatientsViewModel>();
+
+            builder.Services.AddTransient<DoctorPatientDetailsPage>();
+            builder.Services.AddTransient<DoctorPatientDetailsViewModel>();
+
             builder.Services.AddSingleton<IPatientService, PatientService>();
 
 #if DEBUG

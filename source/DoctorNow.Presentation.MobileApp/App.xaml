@@ -3,7 +3,6 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
-
         <Color x:Key="PrimaryColor">#0b2027</Color>
         <Color x:Key="PrimaryVariantColor">#184b4e</Color>
         <Color x:Key="SecondaryColor">#70a9a1</Color>
@@ -90,9 +89,9 @@
         <Style TargetType="Image" x:Key="LoginPageIconStyle">
             <Setter Property="HeightRequest" Value="30" />
             <Setter Property="WidthRequest" Value="25" />
-            <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
         </Style>
 
         <Style TargetType="Frame" x:Key="LoginPageFrameEntryStyle">

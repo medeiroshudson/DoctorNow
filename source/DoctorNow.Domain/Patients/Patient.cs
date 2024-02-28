@@ -9,19 +9,23 @@ public class Patient : Entity
     protected Patient() { }
     
     private Patient(
-        Guid id, string name) : base(id)
+        Guid id, string name, string email, string telephoneNumber) : base(id)
     {
         this.Name = name;
+        this.Email = email;
+        this.TelephoneNumber = telephoneNumber;
     }
     
-    public string Name { get; private set; }
-    
-    public Guid UserId { get; init; }
     public User User { get; init; }
+    public Guid UserId { get; init; }
+    public string Name { get; private set; }
+    public string Email { get; private set; }
+    public string TelephoneNumber { get; private set; }
     
-    public static Patient Create(string name)
+    
+    public static Patient Create(string name, string email, string telephoneNumber)
     {
-        var patient = new Patient(Guid.NewGuid(), name)
+        var patient = new Patient(Guid.NewGuid(), name, email, telephoneNumber)
             { CreatedAt = DateTime.UtcNow };
 
         patient.Raise(new PatientCreatedEvent(patient.Id));

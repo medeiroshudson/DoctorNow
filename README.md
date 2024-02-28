@@ -5,7 +5,6 @@
 - [X] Options Pattern for Entity Framework Configuration;
 - [X] Implementing Result Pattern;
 - [X] Type mapping engine - AutoMapper? Mapperly?;
-- [X] Global Error Handling;
 - [ ] Implementing Validation Engine;
 - [ ] Implementing EF Interceptors instead direct logic in context
 - [ ] Refactoring Mediator Pattern - implement my own "MediatR";
@@ -16,6 +15,7 @@
 - [ ] Move Persistence logic to own class library (DoctorNow.Infrastructure.Persistence);
 
 ## Features - Api
+- [X] Global Error Handling;
 - [X] HealthCheck endpoint;
 - [X] Api Authentication;
 - [ ] Api Authorization;
@@ -26,9 +26,11 @@
 - [ ] Implement Home Dashboard wireframe;
 - [ ] Implement Patients view for Doctor;
 - [ ] Implement Settings view;
+- [ ] Global Error Handling;
 - [ ] Transition between pages;
 - [ ] Implement Api server;
-- [ ] Statefull pages;
+- [ ] Stateful pages;
+- [ ] EPJ AutoPages - automaic pages declaration;
 
 
 # EF Commands

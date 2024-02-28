@@ -73,6 +73,9 @@
 	  <Compile Update="Views\Doctor\DoctorHomePage.xaml.cs">
 	    <DependentUpon>DoctorHomePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Doctor\DoctorPatientDetailsPage.xaml.cs">
+	    <DependentUpon>DoctorPatientDetailsPagexaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Doctor\DoctorPatientsPage.xaml.cs">
 	    <DependentUpon>DoctorPatientsPage.xaml</DependentUpon>
 	  </Compile>
@@ -89,6 +92,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Doctor\DoctorHomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Doctor\DoctorPatientDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SettingsPage.xaml">

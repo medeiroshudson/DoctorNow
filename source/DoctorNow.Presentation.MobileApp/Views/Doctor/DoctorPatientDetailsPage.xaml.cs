@@ -2,9 +2,9 @@
 
 namespace DoctorNow.Presentation.MobileApp.Views.Doctor;
 
-public partial class DoctorPatientsPage : BasePage
+public partial class DoctorPatientDetailsPage : BasePage
 {
-    public DoctorPatientsPage(DoctorPatientsViewModel viewModel)
+    public DoctorPatientDetailsPage(DoctorPatientDetailsViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

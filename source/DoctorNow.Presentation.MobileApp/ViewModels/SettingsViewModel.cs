@@ -1,13 +1,13 @@
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
+using DoctorNow.Presentation.MobileApp.Views;
 
 namespace DoctorNow.Presentation.MobileApp.ViewModels;
 
 public partial class SettingsViewModel : BaseViewModel
 {
     [RelayCommand]
-    private static async Task Logoff()
+    private static void Logoff()
     {
-        await Shell.Current!.GoToAsync("//login");
+        Shell.Current!.GoToAsync("//login");
     }
 } 

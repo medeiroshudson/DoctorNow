@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:views="clr-namespace:DoctorNow.Presentation.MobileApp.Views"
+          xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+          xmlns:local="clr-namespace:DoctorNow.Presentation.MobileApp.ViewModels.Doctor"
+          x:Class="DoctorNow.Presentation.MobileApp.Views.Doctor.DoctorPatientDetailsPage"
+          x:DataType="local:DoctorPatientDetailsViewModel">
+    <!-- Resources -->
+    <views:BasePage.Resources>
+        <Style TargetType="Label" x:Key="DetailsHeaderNameStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+        
+        <Style TargetType="Label" x:Key="DetailsHeaderInfoStyle" BasedOn="{StaticResource BaseBoldLabelStyle}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+        </Style>
+    </views:BasePage.Resources>
+    
+    <!-- Behaviours -->
+    <views:BasePage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadDataCommand}" />
+    </views:BasePage.Behaviors>
+    
+    <views:BasePage.Content>
+        <AbsoluteLayout>
+            <StackLayout IsVisible="{Binding IsBusy}"
+                         AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Color="{StaticResource PrimaryColor}"/>
+            </StackLayout>
+            
+            <StackLayout AbsoluteLayout.LayoutFlags="All"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <Grid RowDefinitions="180, *">
+                    
+                    <!-- Context Box Rectangle  -->
+                    <BoxView CornerRadius="0, 0, 10, 10" 
+                             Color="{StaticResource PrimaryVariantColor}">
+                        <BoxView.Shadow>
+                            <Shadow Brush="{StaticResource LightBorderColor}"
+                                    Offset="10, 10"
+                                    Radius="1"
+                                    Opacity="1"/>
+                        </BoxView.Shadow>
+                    </BoxView>
+                    
+                    <!-- Context Grid -->
+                    <Grid Grid.Row="0" RowDefinitions="Auto, *">
+                        
+                        <!-- Back Button -->
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Frame Padding="10" BackgroundColor="Transparent"> 
+                                <Frame.GestureRecognizers> 
+                                    <TapGestureRecognizer Command="{Binding GoBackCommand}" /> 
+                                </Frame.GestureRecognizers> 
+                                   
+                                <Image Source="icon_back.svg"  
+                                       VerticalOptions="Start" 
+                                       HorizontalOptions="Start" 
+                                       Style="{StaticResource LoginPageIconStyle}" 
+                                       Behaviors="{ toolkit:IconTintColorBehavior TintColor={StaticResource LightTextColor} }" /> 
+                            </Frame> 
+                        </Grid>
+                        
+                        <!-- Patient Context -->
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Grid ColumnDefinitions="Auto, *">
+                                
+                                <!-- Patient Image -->
+                                <Grid Grid.Column="0"
+                                      Margin="10, 0, -10, 0"
+                                      WidthRequest="80"
+                                      HeightRequest="80"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center">
+                                    <Image Source="icon_profile.svg"
+                                           Behaviors="{ toolkit:IconTintColorBehavior TintColor={StaticResource LightTextColor} }"/>
+                                </Grid>
+                                
+                                <!-- Patient Data -->
+                                <Grid Grid.Column="1" 
+                                      Margin="10" 
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Patient.Name}"
+                                               Style="{StaticResource DetailsHeaderNameStyle}"  />
+                                        
+                                        <Label Text="{Binding Patient.TelephoneNumber}"
+                                               Style="{StaticResource DetailsHeaderInfoStyle}"  />
+                        
+                                        <Label Text="{Binding Patient.Email}"
+                                               Style="{StaticResource DetailsHeaderInfoStyle}"  />
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    
+                    <!-- Page Content -->
+                    <Grid Grid.Row="1" Margin="20">
+                        <StackLayout>
+                             
+                            <!-- Option -->
+                            <Frame Margin="10">
+                                <Grid ColumnDefinitions=".2*, .8*">
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Source="icon_home.svg" />
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Padding="5"
+                                                         VerticalOptions="Center">
+                                        <Label Text="Documents" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                            
+                            <Frame Margin="10">
+                                <Grid ColumnDefinitions=".2*, .8*">
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Source="icon_home.svg" />
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Padding="5"
+                                                         VerticalOptions="Center">
+                                        <Label Text="Medical Appointments" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                            
+                            <Frame Margin="10">
+                                <Grid ColumnDefinitions=".2*, .8*">
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Source="icon_home.svg" />
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Padding="5"
+                                                         VerticalOptions="Center">
+                                        <Label Text="Prenatal Care" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                            
+                            <Frame Margin="10">
+                                <Grid ColumnDefinitions=".2*, .8*">
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Source="icon_home.svg" />
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Grid.Row="0"
+                                                         Padding="5"
+                                                         VerticalOptions="Center">
+                                        <Label Text="Ultrasound" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                            
+                        </StackLayout> 
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </AbsoluteLayout>
+    </views:BasePage.Content>
+</views:BasePage>
